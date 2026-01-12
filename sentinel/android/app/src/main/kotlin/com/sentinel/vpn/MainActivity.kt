@@ -71,6 +71,26 @@ class MainActivity : FlutterActivity() {
                     startService(intent)
                     result.success(null)
                 }
+                "blockDomain" -> {
+                    val domain = call.argument<String>("domain")
+                    val blocked = call.argument<Boolean>("blocked") ?: false
+                    val intent = Intent(this, SentinelVpnService::class.java)
+                    intent.action = SentinelVpnService.ACTION_BLOCK_DOMAIN
+                    intent.putExtra("domain", domain)
+                    intent.putExtra("blocked", blocked)
+                    startService(intent)
+                    result.success(null)
+                }
+                "blockIp" -> {
+                    val ip = call.argument<String>("ip")
+                    val blocked = call.argument<Boolean>("blocked") ?: false
+                    val intent = Intent(this, SentinelVpnService::class.java)
+                    intent.action = SentinelVpnService.ACTION_BLOCK_IP
+                    intent.putExtra("ip", ip)
+                    intent.putExtra("blocked", blocked)
+                    startService(intent)
+                    result.success(null)
+                }
                 else -> result.notImplemented()
             }
         }

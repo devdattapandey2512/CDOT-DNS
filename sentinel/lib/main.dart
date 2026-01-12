@@ -4,6 +4,7 @@ import 'package:sentinel/providers/vpn_provider.dart';
 import 'package:sentinel/ui/dashboard.dart';
 import 'package:sentinel/ui/firewall_screen.dart';
 import 'package:sentinel/ui/logs_screen.dart';
+import 'package:sentinel/ui/splash_screen.dart';
 
 void main() {
   runApp(const SentinelApp());
@@ -19,7 +20,7 @@ class SentinelApp extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => VpnProvider()),
       ],
       child: MaterialApp(
-        title: 'Sentinel',
+        title: 'CDOT Monitor',
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
           brightness: Brightness.dark,
@@ -27,7 +28,7 @@ class SentinelApp extends StatelessWidget {
           scaffoldBackgroundColor: const Color(0xFF0D1117),
           useMaterial3: true,
         ),
-        home: const MainScreen(),
+        home: const SplashScreen(),
       ),
     );
   }

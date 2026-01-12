@@ -27,7 +27,7 @@ class DashboardScreen extends StatelessWidget {
                       Icon(Icons.shield_outlined, color: Colors.blueAccent, size: 32),
                       const SizedBox(width: 8),
                       Text(
-                        'Sentinel',
+                        'CDOT Monitor',
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: 24,
@@ -106,8 +106,8 @@ class DashboardScreen extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  _buildStatItem('Upload', '1.2 MB', Icons.arrow_upward, Colors.orange),
-                  _buildStatItem('Download', '4.5 MB', Icons.arrow_downward, Colors.green),
+                  _buildStatItem('Upload', vpnProvider.uploadSpeed, Icons.arrow_upward, Colors.orange),
+                  _buildStatItem('Download', vpnProvider.downloadSpeed, Icons.arrow_downward, Colors.green),
                   _buildStatItem('Blocked', '${vpnProvider.logs.where((l) => l.blocked).length}', Icons.block, Colors.red),
                 ],
               ),

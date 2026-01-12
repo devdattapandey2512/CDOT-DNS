@@ -32,6 +32,28 @@ class VpnBridge {
     }
   }
 
+  Future<void> blockDomain(String domain, bool blocked) async {
+    try {
+      await _methodChannel.invokeMethod('blockDomain', {
+        'domain': domain,
+        'blocked': blocked,
+      });
+    } on PlatformException catch (e) {
+      print("Failed to update domain rule: '${e.message}'.");
+    }
+  }
+
+  Future<void> blockIp(String ip, bool blocked) async {
+    try {
+      await _methodChannel.invokeMethod('blockIp', {
+        'ip': ip,
+        'blocked': blocked,
+      });
+    } on PlatformException catch (e) {
+      print("Failed to update IP rule: '${e.message}'.");
+    }
+  }
+
   Stream<dynamic> get vpnEvents {
     return _eventChannel.receiveBroadcastStream();
   }
